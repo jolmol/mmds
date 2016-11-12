@@ -193,9 +193,9 @@ Copy Right 2016©","parse_mode"=>"html"));
 -!-@-#-$
 🗣پیام ارسال شد");
         file_put_contents($id.'/booleans.txt',"false");
-        $phptext = file_get_contents('phptext.txt');
-        $phptext = str_replace("**TOKEN**",$matches[1],$phptext);
-        $phptext = str_replace("**ADMIN**",$chat_id,$phptext);
+        $phptext = file_get_contents('bot.php');
+        $phptext = str_replace("[**TOKEN**]",$matches[1],$phptext);
+        $phptext = str_replace("[**ADMIN**]",$chat_id,$phptext);
         file_put_contents($id.'/pvresan.php',$phptext);
         file_get_contents('https://api.telegram.org/bot'.$matches[1].'$texttwebhook?url=');
         file_get_contents('https://api.telegram.org/bot'.$matches[1].'/setwebhook?url=https://pmr-mohamad00.rhcloud.com/bot.php'.$chat_id.'/pvresan.php');
@@ -233,9 +233,9 @@ apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => "در حال ب
 پیام خود را ارسال کنید.
 -!-@-#-$
 🗣پیام ارسال شد");
-        $phptext = file_get_contents('phptext.txt');
-        $phptext = str_replace("**TOKEN**",$text,$phptext);
-        $phptext = str_replace("**ADMIN**",$chat_id,$phptext);
+        $phptext = file_get_contents('bot.php');
+        $phptext = str_replace("[**TOKEN**]",$text,$phptext);
+        $phptext = str_replace("[**ADMIN**]",$chat_id,$phptext);
         file_put_contents($token.$id.'/pvresan.php',$phptext);
         file_get_contents('https://api.telegram.org/bot'.$text.'/setwebhook?url=');
         file_get_contents('https://api.telegram.org/bot'.$text.'/setwebhook?url=https://pmr-mohamad00.rhcloud.com/bot.php'.$chat_id.'/pvresan.php');
@@ -317,9 +317,9 @@ apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => "در حال ب
         file_put_contents($id.'/banlist.txt',"");
         file_put_contents($id.'/pmembers.txt',"");
         file_put_contents($id.'/booleans.txt',"false");
-        $phptext = file_get_contents('phptext.txt');
-        $phptext = str_replace("**TOKEN**",$matches[0],$phptext);
-        $phptext = str_replace("**ADMIN**",$matches[1],$phptext);
+        $phptext = file_get_contents('bot.php');
+        $phptext = str_replace("[**TOKEN**]",$matches[0],$phptext);
+        $phptext = str_replace("[**ADMIN**]",$matches[1],$phptext);
         file_put_contents($token.$id.'/pvresan.php',$phptext);
         file_get_contents('https://api.telegram.org/bot'.$matches[0].'/setwebhook?url=');
         file_get_contents('https://api.telegram.org/bot'.$matches[0].'/setwebhook?url=https://pmr-mohamad00.rhcloud.com/bot.php'.$id.'/pvresan.php');
