@@ -1,6 +1,6 @@
 <?php
 
-define('API_KEY','293548592:AAFeXizQ58EuqbOJNwvfCCUpueG3AIkO2K0');
+define('API_KEY','293548592:AAGMSzmUoFd3VlEl7w1NUL-EBl3lkaFsBec');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -70,13 +70,4 @@ var_dump(makereq('sendMessage',[
         ])
     ]));  
     
-else($textmessage == 'info')
-    $s = httpt('getUserProfilePhotos',['user_id'=>$id]);
-    if($s->result->photos[0][3]->file_id or $s->result->photos[0][2]->file_id or $s->result->photos[0][1]->file_id){
-      $telegram->sendChatAction(array('chat_id'=>$chat_id,'action'=>'upload_photo'));
-      $send = $s->result->photos[0][3]->file_id;
-      httpt('sendPhoto',[
-        'chat_id'=>$chat_id,
-        'photo'=>$send,
-        'caption'=>"Your ID : $id\n\nYour Username : @$username",
 ?>
