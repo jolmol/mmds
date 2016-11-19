@@ -1,7 +1,7 @@
 <?php
 $content= file_get_contents("php://input");
 $update = json_decode($content);
-define("API_KEY","token");
+define("API_KEY","293548592:AAFYpmpCEQey-zk41tpV4vQfMEZwZasZKlo");
 function sendMessage($datas){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
     $ch = curl_init();
