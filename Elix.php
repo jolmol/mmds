@@ -1,6 +1,5 @@
 <?php
-
-define('API_KEY','293548592:AAGMSzmUoFd3VlEl7w1NUL-EBl3lkaFsBec');
+define('API_KEY','293548592:AAFnIXb1XENnArg0_V1HHfszt3xs34sbkUI');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -48,6 +47,7 @@ $name = $update->message->from->first_name;
 $username = $update->message->from->username;
 $textmessage = isset($update->message->text)?$update->message->text:'';
 $id = $update->message->from->id;
+$chat_id = $update->message->chat->id;
 //----
 if($textmessage == '/start')
 var_dump(makereq('sendMessage',[
@@ -69,5 +69,36 @@ var_dump(makereq('sendMessage',[
             ]
         ])
     ]));  
-    
+      if($textmessage == 'info'){
+    $id = $update->message->from->id;
+    $name = $update->message->from->first_name;
+    $username = $update->message->from->username;
+    $s = httpt('getUserProfilePhotos',['user_id'=>$id]);
+    if($s->result->photos[0][3]->file_id or $s->result->photos[0][2]->file_id or $s->result->photos[0][1]->file_id){
+      $telegram->sendChatAction(array('chat_id'=>$chat_id,'action'=>'upload_photo'));
+      $send = $s->result->photos[0][3]->file_id;
+      httpt('sendPhoto',[
+        'chat_id'=>$chat_id,
+        'photo'=>$send,
+        'caption'=>"Your ID : $id\n??????\nYour Username : @$username\n??????",
+        'reply_markup'=>json_encode([
+          'inline_keyboard'=>[
+            [
+              ['text'=>"$username",'url'=>"https://telegram.me/$username"]
+            ]
+          ]
+        ])
+      ]);
+    }
+      if($textmessage == 'code')
+  {
+  	Sendmessage($chat_id,"متن خود را بفرستيد");
+  }{
+    $text = str_replace('',$update->message->text);
+    var_dump(httpt('sendMessage',[
+      'chat_id'=>$update->message->chat->id,
+      'text'=>"<code>".($text)."</code>",
+      'parse_mode'=>'HTML'
+    ]));
+  }
 ?>
