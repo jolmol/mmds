@@ -1,52 +1,67 @@
 <?php
-$content= file_get_contents("php://input");
-$update = json_decode($content);
-define("API_KEY","293548592:AAFYpmpCEQey-zk41tpV4vQfMEZwZasZKlo");
-function sendMessage($datas){
+
+define('API_KEY','293548592:AAFeXizQ58EuqbOJNwvfCCUpueG3AIkO2K0');
+//----######------
+function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL,$url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    $datas["api_key"]=API_KEY;
-    curl_setopt($ch, CURLOPT_POSTFIELDS,
-        http_build_query($datas));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $server_output = curl_exec ($ch);
-    curl_close ($ch);
-    return json_decode($server_output);
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($datas));
+    $res = curl_exec($ch);
+    if(curl_error($ch)){
+        var_dump(curl_error($ch));
+    }else{
+        return json_decode($res);
+    }
 }
-$update = json_decode(file_get_contents('php://input'));
-var_dump($update);
-$message_id = $update->message->message_id;
-$from_id = $update->message->from->id;
-$name = $update->message->from->first_name;
-$username = $update->message->from->username;
-$textmessage = isset($update->message->text)?$update->message->text:'';
-$id = $update->message->from->id;
-//----
+//##############=--API_REQ
+function apiRequest($method, $parameters) {
+  if (!is_string($method)) {
+    error_log("Method name must be a string\n");
+    return false;
+  }
+  if (!$parameters) {
+    $parameters = array();
+  } else if (!is_array($parameters)) {
+    error_log("Parameters must be an array\n");
+    return false;
+  }
+  foreach ($parameters as $key => &$val) {
+    // encoding to JSON array parameters, for example reply_markup
+    if (!is_numeric($val) && !is_string($val)) {
+      $val = json_encode($val);
+    }
+  }
+  $url = "https://api.telegram.org/bot".API_KEY."/".$method.'?'.http_build_query($parameters);
+  $handle = curl_init($url);
+  curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
+  curl_setopt($handle, CURLOPT_TIMEOUT, 60);
+  return exec_curl_request($handle);
+}
 if($textmessage == '/start')
 var_dump(makereq('sendMessage',[
         'chat_id'=>$update->message->chat->id,
-        'text'=>"Hi `$name` \n\nWelcome To ElixBot ",
+        'text'=>"Hi $name \n\nWelcome To ElixBot ",
         'parse_mode'=>'MarkDown',
         'reply_markup'=>json_encode([
             'keyboard'=>[
               [
                 ['text'=>"bold"],['text'=>"italic"]
               ],
-	      [
+        [
                 ['text'=>"code"]
               ],  
         [
                 ['text'=>"info"]
               ]
-              ,"resize_keyboard"=>true
         
             ]
         ])
-    ]));	
+    ]));  
     
-if($textmessage == 'info')
+else($textmessage == 'info')
     $s = httpt('getUserProfilePhotos',['user_id'=>$id]);
     if($s->result->photos[0][3]->file_id or $s->result->photos[0][2]->file_id or $s->result->photos[0][1]->file_id){
       $telegram->sendChatAction(array('chat_id'=>$chat_id,'action'=>'upload_photo'));
