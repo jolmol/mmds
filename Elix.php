@@ -40,6 +40,15 @@ function apiRequest($method, $parameters) {
   curl_setopt($handle, CURLOPT_TIMEOUT, 60);
   return exec_curl_request($handle);
 }
+$update = json_decode(file_get_contents('php://input'));
+var_dump($update);
+$message_id = $update->message->message_id;
+$from_id = $update->message->from->id;
+$name = $update->message->from->first_name;
+$username = $update->message->from->username;
+$textmessage = isset($update->message->text)?$update->message->text:'';
+$id = $update->message->from->id;
+//----
 if($textmessage == '/start')
 var_dump(makereq('sendMessage',[
         'chat_id'=>$update->message->chat->id,
