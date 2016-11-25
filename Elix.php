@@ -1,5 +1,5 @@
 <?php
-define('API_KEY','293548592:AAGMSzmUoFd3VlEl7w1NUL-EBl3lkaFsBec');
+define('API_KEY','293548592:AAHhD98yncqWZv1bEgM4-24BwEHsVf6yRY0');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -79,11 +79,11 @@ if ($id == $Dev)
 $rk = "Develope";
 }
 else
-{ $rk = "ÇŞÇí $name \n\nÈÇ ÇíÏí : @$username \n\nÔãÇ í˜ ˜ÇÑÈÑ ÚÇÏí åÓÊíÏ"; }}
+{ $rk = "Ã‡ÃÃ‡Ã­ $name \n\nÃˆÃ‡ Ã‡Ã­ÃÃ­ : @$username \n\nÃ”Ã£Ã‡ Ã­Ëœ ËœÃ‡Ã‘ÃˆÃ‘ ÃšÃ‡ÃÃ­ Ã¥Ã“ÃŠÃ­Ã"; }}
   
-else if ($textmessage =="ÇÑÓÇá íÇã Èå åãå"  && $chat_id == $Dev | $booleans[0]=="false") {
+else if ($textmessage =="Ã‡Ã‘Ã“Ã‡Ã¡ ÂÃ­Ã‡Ã£ ÃˆÃ¥ Ã¥Ã£Ã¥"  && $chat_id == $Dev | $booleans[0]=="false") {
 {
-sendmessage($chat_id,"áØİÇ íÇã ÎæÏÑÇ ÇÑÓÇá ˜äíÏ");
+sendmessage($chat_id,"Ã¡Ã˜ÃÃ‡ ÂÃ­Ã‡Ã£ ÃÃ¦ÃÃ‘Ã‡ Ã‡Ã‘Ã“Ã‡Ã¡ ËœÃ¤Ã­Ã");
 }
 $boolean = file_get_contents('booleans.txt');
 $booleans= explode("\n",$boolean);
@@ -102,25 +102,25 @@ sendmessage($membersidd[$y],"$texttoall");
 }
 $memcout = count($membersidd)-1;
 {
-Sendmessage($chat_id,"íÛÇã ÔãÇ Èå $memcout ãÎÇØÈ ÇÑÓÇá ÔÏ.");
+Sendmessage($chat_id,"ÂÃ­Ã›Ã‡Ã£ Ã”Ã£Ã‡ ÃˆÃ¥ $memcout Ã£ÃÃ‡Ã˜Ãˆ Ã‡Ã‘Ã“Ã‡Ã¡ Ã”Ã.");
 }
 $addd = "false";
 file_put_contents('booleans.txt',$addd);
 }
 }
-else if($textmessage == 'áíÓÊ ÇÚÖÇ' && $chat_id == $Dev)
+else if($textmessage == 'Ã¡Ã­Ã“ÃŠ Ã‡ÃšÃ–Ã‡' && $chat_id == $Dev)
 {
 $txtt = file_get_contents('member.txt');
 $membersidd= explode("\n",$txtt);
 $mmemcount = count($membersidd) -1;
 {
-sendmessage($chat_id,"áíÓÊ ÇÚÖÇí ÑÈÇÊ : $mmemcount");
+sendmessage($chat_id,"Ã¡Ã­Ã“ÃŠ Ã‡ÃšÃ–Ã‡Ã­ Ã‘ÃˆÃ‡ÃŠ : $mmemcount");
 }
 }
 else if ($textmessage == "bold"){
 var_dump(httpt('sendMessage',[
 'chat_id'=>$update->message->chat->id,
-'text'=>'áØİÇ ãÊä ÎæÏÑÇ ÈİÑÓÊíÏ',
+'text'=>'Ã¡Ã˜ÃÃ‡ Ã£ÃŠÃ¤ ÃÃ¦ÃÃ‘Ã‡ ÃˆÃÃ‘Ã“ÃŠÃ­Ã',
 $text = str_replace($update->message->text);
 var_dump(httpt('sendMessage',[
 'chat_id'=>$update->message->chat->id,
