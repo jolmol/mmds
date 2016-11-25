@@ -1,5 +1,5 @@
 <?php
-define('API_KEY','293548592:AAHhD98yncqWZv1bEgM4-24BwEHsVf6yRY0');
+define('API_KEY','293548592:AAGMSzmUoFd3VlEl7w1NUL-EBl3lkaFsBec');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -79,11 +79,11 @@ if ($id == $Dev)
 $rk = "Develope";
 }
 else
-{ $rk = "ÇÞÇí $name \n\nÈÇ ÇíÏí : @$username \n\nÔãÇ í˜ ˜ÇÑÈÑ ÚÇÏí åÓÊíÏ"; }}
+{ $rk = "اقاي $name \n\nبا ايدي : @$username \n\nشما يک کاربر عادي هستيد"; }}
   
-else if ($textmessage =="ÇÑÓÇá íÇã Èå åãå"  && $chat_id == $Dev | $booleans[0]=="false") {
+else if ($textmessage =="ارسال پيام به همه"  && $chat_id == $Dev | $booleans[0]=="false") {
 {
-sendmessage($chat_id,"áØÝÇ íÇã ÎæÏÑÇ ÇÑÓÇá ˜äíÏ");
+sendmessage($chat_id,"لطفا پيام خودرا ارسال کنيد");
 }
 $boolean = file_get_contents('booleans.txt');
 $booleans= explode("\n",$boolean);
@@ -102,25 +102,25 @@ sendmessage($membersidd[$y],"$texttoall");
 }
 $memcout = count($membersidd)-1;
 {
-Sendmessage($chat_id,"íÛÇã ÔãÇ Èå $memcout ãÎÇØÈ ÇÑÓÇá ÔÏ.");
+Sendmessage($chat_id,"پيغام شما به $memcout مخاطب ارسال شد.");
 }
 $addd = "false";
 file_put_contents('booleans.txt',$addd);
 }
 }
-else if($textmessage == 'áíÓÊ ÇÚÖÇ' && $chat_id == $Dev)
+else if($textmessage == 'ليست اعضا' && $chat_id == $Dev)
 {
 $txtt = file_get_contents('member.txt');
 $membersidd= explode("\n",$txtt);
 $mmemcount = count($membersidd) -1;
 {
-sendmessage($chat_id,"áíÓÊ ÇÚÖÇí ÑÈÇÊ : $mmemcount");
+sendmessage($chat_id,"ليست اعضاي ربات : $mmemcount");
 }
 }
 else if ($textmessage == "bold"){
 var_dump(httpt('sendMessage',[
 'chat_id'=>$update->message->chat->id,
-'text'=>'áØÝÇ ãÊä ÎæÏÑÇ ÈÝÑÓÊíÏ',
+'text'=>'لطفا متن خودرا بفرستيد',
 $text = str_replace($update->message->text);
 var_dump(httpt('sendMessage',[
 'chat_id'=>$update->message->chat->id,
