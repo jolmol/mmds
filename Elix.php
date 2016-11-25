@@ -1,5 +1,5 @@
 <?php
-define('API_KEY','293548592:AAHuvLLF2UJ70Rc2JzxzRv95gaUqONkR8x0');
+define('API_KEY','298990906:AAGJtPxbBUvjg-K7N_En7ptGZvqMm8LGL0o');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -117,14 +117,4 @@ $mmemcount = count($membersidd) -1;
 sendmessage($chat_id,"ليست اعضاي ربات : $mmemcount");
 }
 }
-else if ($textmessage == "bold"){
-var_dump(httpt('sendMessage',[
-'chat_id'=>$update->message->chat->id,
-'text'=>'لطفا متن خودرا بفرستيد',
-$text = str_replace($update->message->text);
-var_dump(httpt('sendMessage',[
-'chat_id'=>$update->message->chat->id,
-'text'=>'<b>' . ($text) . '</b>',
-'parse_mode'=>'HTML'
-]));
 ?>
