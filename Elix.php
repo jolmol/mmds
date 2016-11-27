@@ -1,5 +1,5 @@
 <?php
-define('API_KEY','298990906:AAHpqrq1GzULqBLQkQ4JEGvkxWUw0F8OJgc');
+define('API_KEY','298990906:AAH0gu5vLEU3uPS2uAS9irOvnkUIt6rC3_Y');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -85,7 +85,7 @@ $rk = "Develope";
 }
 else
 { $rk = "اقاي $name \n\nبا ايدي : @$username \n\nشما يک کاربر عادي هستيد"; }}
-  
+                                 }  
 else if ($textmessage =="ارسال پيام به همه"  && $chat_id == $Dev | $booleans[0]=="false") {
 {
 sendmessage($chat_id,"لطفا پيام خودرا ارسال کنيد");
