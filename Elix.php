@@ -1,5 +1,5 @@
 <?php
-define('API_KEY','298990906:AAGJtPxbBUvjg-K7N_En7ptGZvqMm8LGL0o');
+define('API_KEY','298990906:AAHpqrq1GzULqBLQkQ4JEGvkxWUw0F8OJgc');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -52,7 +52,12 @@ $Dev = 193930120;
 //----
 $boolean = file_get_contents('booleans.txt');
   $booleans= explode("\n",$boolean);
-//--
+$bolds =
+file_get_contents('bold.txt');
+  $bold= explode("\n",$bolds);
+
+
+//—
 if($textmessage == '/start')
 var_dump(makereq('sendMessage',[
         'chat_id'=>$update->message->chat->id,
@@ -116,5 +121,17 @@ $mmemcount = count($membersidd) -1;
 {
 sendmessage($chat_id,"ليست اعضاي ربات : $mmemcount");
 }
+}
+else if ($textmessage == "bold" && $bold[0] == 'false'){
+file_put_contents('bold.txt',"true");
+var_dump(httpt('sendMessage',[
+'chat_id'=>$update->message->chat->id,
+'text'=>'لطفا متن خودرا بفرستيد',
+else if ($bold[0] == 'true'){
+var_dump(httpt('sendMessage',[
+'chat_id'=>$update->message->chat->id,
+'text'=>'<b>' .$textmessage. '</b>',
+'parse_mode'=>'HTML'
+]));
 }
 ?>
