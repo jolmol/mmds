@@ -1,5 +1,5 @@
 <?php
-define('API_KEY','289626009:AAHNUkU_UNgh3cevgzVNV4aPQvsIi2JaQqQ');
+define('API_KEY','293578610:AAFupz3T_qyj1eRQ5eIrNkf9UEhtmsbHeEk');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -78,11 +78,6 @@ var_dump(makereq('sendMessage',[
             ]
         ])
     ]));  
-else if ($textmessage == "rank") {{$rk == "";
-if ($id == $Dev)
-{
-$rk = "Develope";
-}
 else
 { $rk = "اقاي $name \n\nبا ايدي : @$username \n\nشما يک کاربر عادي هستيد"; }}
 }  
