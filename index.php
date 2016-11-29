@@ -7,7 +7,7 @@
 # if you need Help for develop this source , You Can Send Message To Me With @SpyGuard_BOT #
 ############################################################################################
 */
-define('API_KEY','233635555:AAGSjuXo5YKhdwTqQon7cHDDTGO2dumFhIw');
+define('API_KEY','270563875:AAEM4Tk6COYPN_vUz9lwsE7_U3Ob-in_Euw');
 //----######------
 function makereq($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -60,7 +60,7 @@ $username = $update->message->from->username;
 $textmessage = isset($update->message->text)?$update->message->text:'';
 $reply = $update->message->reply_to_message->forward_from->id;
 $stickerid = $update->message->reply_to_message->sticker->file_id;
-$admin = 66443035;
+$admin = 193930120;
 $step = file_get_contents("data/".$from_id."/step.txt");
 
 //-------
